@@ -1,0 +1,91 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "furpberry"
+version = "0.2.0"
+description = "Absolutely unhinged hobby project"
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = ["Programming Language :: Python :: 3"]
+
+# NOTE: if you modify this, run `make refresh-deps` after to regenerate
+# requirements files.
+dependencies = [
+
+]
+
+[project.optional-dependencies]
+# NOTE: if you modify this, run `make refresh-deps` after to regenerate
+# requirements files.
+dev = [
+    "black",
+    "flake8",
+    "flake8-annotations",
+    "flake8-bugbear",
+    "flake8-isort",
+    "flake8-pyproject",
+    "isort",
+    "mypy==1.0.0",
+    "types-requests",
+]
+
+[tool.isort]
+profile = "black"
+extend_skip = [".github", "src/version"]
+
+[tool.black]
+target-version = ['py311']
+# Add additional paths to exclude, in addition to the default.
+# This is a regular expression, hence the funky syntax.
+extend-exclude = '''
+/(
+  | \.github
+  | src/version
+)/
+'''
+line-length = 120
+
+
+[tool.flake8]
+select = "ANN,B,B9,BLK,C,E,F,W,B950"
+max-line-length = 120
+exclude = [".git", ".github", " __pycache__", "old", "build", "dist", "venv", "src/version"]
+extend-ignore = [
+  # ignoring E203 and E501 lets us use the black line length
+  "E203",
+  "E501",
+  "W203",
+  # 503 is not PEP8 compliant and "should not be enabled",
+  # per https://black.readthedocs.io/en/stable/guides/using_black_with_other_tools.html#id1
+  "W503",
+  # Calling functions in argument defaults: this is encouraged by FastAPI.
+  "B008",
+  # Don't warn about type hints for *args arguments
+  "ANN002",
+  # Don't warn about type hints for *kwargs arguments
+  "ANN003",
+  # Don't warn about type hints for `self` arguments in methods
+  "ANN101",
+  # Don't warn about type hints for `cls` arguments in classmethods
+  "ANN102",
+]
+# Note: if we need to disable per-file type annotations errors,
+# use per-file-ignores, e.g. `myfile.py:ANN`
+
+[tool.mypy]
+ignore_missing_imports = true
+warn_unused_ignores = true
+no_strict_optional = true
+check_untyped_defs = true
+
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests",
+]
+
+[project.scripts]
+epsilon3 = "epsilon3_integration.app:start"
+update_definitions = "epsilon3_integration.app:update"
