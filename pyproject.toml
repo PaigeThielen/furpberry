@@ -7,13 +7,13 @@ name = "furpberry"
 version = "0.2.0"
 description = "Absolutely unhinged hobby project"
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.8"
 classifiers = ["Programming Language :: Python :: 3"]
 
 # NOTE: if you modify this, run `make refresh-deps` after to regenerate
 # requirements files.
 dependencies = [
-
+  "RPi.GPIO",
 ]
 
 [project.optional-dependencies]
@@ -51,7 +51,7 @@ line-length = 120
 [tool.flake8]
 select = "ANN,B,B9,BLK,C,E,F,W,B950"
 max-line-length = 120
-exclude = [".git", ".github", " __pycache__", "old", "build", "dist", "venv", "src/version"]
+exclude = [".git", ".github", " __pycache__", "old", "build", "dist", "venv", "src/version", "src/util/pyfurby"]
 extend-ignore = [
   # ignoring E203 and E501 lets us use the black line length
   "E203",

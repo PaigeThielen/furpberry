@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: furpberry
+Version: 0.2.0
+Summary: Absolutely unhinged hobby project
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: RPi.GPIO
+Provides-Extra: dev
+Requires-Dist: black; extra == "dev"
+Requires-Dist: flake8; extra == "dev"
+Requires-Dist: flake8-annotations; extra == "dev"
+Requires-Dist: flake8-bugbear; extra == "dev"
+Requires-Dist: flake8-isort; extra == "dev"
+Requires-Dist: flake8-pyproject; extra == "dev"
+Requires-Dist: isort; extra == "dev"
+Requires-Dist: mypy==1.0.0; extra == "dev"
+Requires-Dist: types-requests; extra == "dev"
+
+# Paige's Absolutely Unhinged Furby Hack Project
+This uses a 2012 Furby purchased on ebay and deconstructed. 
+It also uses a Raspberry Pi Zero W and ... (TBD)
+
+# Some resources
+## Furby code: 
+https://github.com/iafan/Hacksby
+## Pyfurby: 
+https://github.com/matteoferla/pyfurby
