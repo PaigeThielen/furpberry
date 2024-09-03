@@ -14,6 +14,10 @@ classifiers = ["Programming Language :: Python :: 3"]
 # requirements files.
 dependencies = [
   "RPi.GPIO",
+  "st7789==0.0.4",
+  "pillow",
+  "numpy",
+  "spidev"
 ]
 
 [project.optional-dependencies]
@@ -33,7 +37,7 @@ dev = [
 
 [tool.isort]
 profile = "black"
-extend_skip = [".github", "src/version"]
+extend_skip = [".github", "src/version", "src/furpberry/util/pyfurby"]
 
 [tool.black]
 target-version = ['py311']
@@ -43,6 +47,7 @@ extend-exclude = '''
 /(
   | \.github
   | src/version
+  | src/furpberry/util/pyfurby
 )/
 '''
 line-length = 120
@@ -87,5 +92,4 @@ testpaths = [
 ]
 
 [project.scripts]
-epsilon3 = "epsilon3_integration.app:start"
-update_definitions = "epsilon3_integration.app:update"
+furbalicious = "furpberry.main:run_furby"
