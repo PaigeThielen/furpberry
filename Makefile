@@ -70,7 +70,7 @@ black: venv
 	venv/bin/black --check .
 
 # Reformat using isort and black together.
-reformat: venv
+reformat: 
 	venv/bin/isort .
 	venv/bin/black .
 
@@ -81,21 +81,3 @@ flake8: venv
 # mypy (type checks)
 mypy: venv
 	venv/bin/mypy src
-
-.PHONY:
-docker-run:
-	docker compose up --build -d
-
-# Tail all the docker compose logs, starting with the last 100 lines.
-.PHONY:
-docker-logs:
-	docker compose logs -f --tail 100
-
-# Stop the running docker compose containers.
-.PHONY:
-docker-stop:
-	docker compose down
-
-# rebuild and restart the docker compose images
-.PHONY:
-docker-refresh: docker-stop docker-run

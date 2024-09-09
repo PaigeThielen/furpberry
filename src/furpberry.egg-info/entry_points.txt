@@ -1,3 +1,0 @@
-[console_scripts]
-epsilon3 = epsilon3_integration.app:start
-update_definitions = epsilon3_integration.app:update

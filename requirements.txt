@@ -4,5 +4,13 @@
 #
 #    pip-compile --no-emit-index-url --output-file=requirements.txt --strip-extras pyproject.toml
 #
+numpy==2.0.2
+    # via furpberry (pyproject.toml)
+pillow==10.4.0
+    # via furpberry (pyproject.toml)
 rpi-gpio==0.7.1
+    # via furpberry (pyproject.toml)
+spidev==3.6
+    # via furpberry (pyproject.toml)
+st7789==0.0.4
     # via furpberry (pyproject.toml)
