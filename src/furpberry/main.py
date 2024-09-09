@@ -4,9 +4,10 @@ from random import randint
 import RPi.GPIO as GPIO
 from importlib_resources import files
 from PIL import Image
-
+import os
+from pathlib import Path
 import furpberry.util.img
-from src.furpberry.util.hardware import Display, LightSense, Motor
+from furpberry.util.hardware import Display, LightSense, Motor
 
 
 class Furby:
@@ -26,7 +27,9 @@ class Furby:
         self.right_eye: Display = Display(1, x_offset, y_offset, height, width, rotation, invert)
         self.light_sensor = LightSense()
         self.motor = Motor()
-        self.images: list[str] = sorted(files(furpberry.util.img))
+
+        self.image_dir = files(furpberry.util).joinpath('img')
+        self.images: list[str] = sorted(os.listdir(self.image_dir))
         self.starting_image_index: int = -1
 
     def open_eyes(self, starting_image_index: int) -> None:
@@ -34,7 +37,7 @@ class Furby:
         # display left half on left eye
         # display right_eye half on right_eye eye
         self.starting_image_index = starting_image_index
-        image_original = Image.open(self.images[starting_image_index])
+        image_original = Image.open(os.path.join(self.image_dir, self.images[starting_image_index]))
         image_resized = image_original.resize((self.eye_width * 2, self.eye_height))
         left_crop = image_resized.crop((0, 0, self.eye_width, self.eye_height))
         right_crop = image_resized.crop((0 + self.eye_width, 0, self.eye_width * 2, self.eye_height))

@@ -17,7 +17,8 @@ dependencies = [
   "st7789==0.0.4",
   "pillow",
   "numpy",
-  "spidev"
+  "spidev",
+  "importlib-resources"
 ]
 
 [project.optional-dependencies]
@@ -78,6 +79,9 @@ extend-ignore = [
 ]
 # Note: if we need to disable per-file type annotations errors,
 # use per-file-ignores, e.g. `myfile.py:ANN`
+
+[tool.setuptools]
+include-package-data = true
 
 [tool.mypy]
 ignore_missing_imports = true

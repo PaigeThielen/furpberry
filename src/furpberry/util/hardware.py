@@ -101,7 +101,7 @@ class Display:
         self.backlight(True)
 
     def close_eye(self):
-        self.display.clear()
+        # self.display.clear()
         self.backlight(False)
 
     def backlight(self, on: bool) -> None:
@@ -176,10 +176,6 @@ class Motor:
 class LightSense:
     def __init__(self, measurement_pin: Pin = Pin.PI40):
         self.measurement_pin = measurement_pin.value
-
-        # Declare the GPIO settings
-        GPIO.setmode(GPIO.BOARD)
-        GPIO.setwarnings(False)
 
         # set up GPIO pin for light sensor as input
         GPIO.setup(self.measurement_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
