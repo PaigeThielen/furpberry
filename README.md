@@ -77,7 +77,8 @@ This will loop forever (unless it's broken) and will activate the motor and eyes
 sensor detects something, and sleep otherwise.
 
 # Future Plans:
-[] Include sound input to continue motion if music is playing? Currently, this is light-activated only. 
-[] Replace Google home mini with Alexa so I can set my own activation phrase? Low priority but it would be cool to have it respond to "hey furby"
-[] Build a second one using my own instructions and update as needed
-[] Include startup script (setup and run on powerup)
+- [ ] Include sound input to continue motion if music is playing? Currently, this is light-activated only. 
+- [ ] Replace Google home mini with Alexa so I can set my own activation phrase? Low priority but it would be cool to have it respond to "hey furby" (I probably won't do this since I already had google homes handy)
+- [ ] Build a second one using my own instructions and update as needed
+- [ ] Include startup script (setup and run on powerup)
+- [ ] Optimize images. I am fine with the random selection but there's probably a more efficient way to load each image than to start from the path every time. 
