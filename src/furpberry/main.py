@@ -36,9 +36,10 @@ class Furby:
         # crop image into two images
         # display left half on left eye
         # display right_eye half on right_eye eye
-        self.starting_image_index = starting_image_index
+        self.starting_image_index = starting_image_index if starting_image_index < len(self.images) else 0
         image_original = Image.open(os.path.join(self.image_dir, self.images[starting_image_index]))
         image_resized = image_original.resize((self.eye_width * 2, self.eye_height))
+        
         left_crop = image_resized.crop((0, 0, self.eye_width, self.eye_height))
         right_crop = image_resized.crop((0 + self.eye_width, 0, self.eye_width * 2, self.eye_height))
 
