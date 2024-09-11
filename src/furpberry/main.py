@@ -28,7 +28,7 @@ class Furby:
         self.light_sensor = LightSense()
         self.motor = Motor()
 
-        self.image_dir = files(furpberry.util).joinpath('img')
+        self.image_dir = files(furpberry.util).joinpath('resized_images')
         self.images: list[str] = sorted(os.listdir(self.image_dir))
         self.starting_image_index: int = -1
 
