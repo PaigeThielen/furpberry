@@ -25,7 +25,7 @@ I need to verify that the wires are correctly routed, I can just count.
 |--------|----------|--------------------------|--------------------------------------------------------|
 | 1      | -        | Light sensor Vin         | 3V3 supply voltage for CdS                             |
 | 2      | -        | TB6612 VCC               | Motor control 5V supply (VCC) (NOT motor power)        |
-| 3      | -        | ST7789 VCC               | Shared peripheral 5V supply (VCC for both displays)    |
+| 4      | -        | ST7789 VCC               | Shared peripheral 5V supply (VCC for both displays)    |
 | 6      | -        | ST7789 GND               | Shared peripheral GND (display GND, motor control GND) |
 | 7      | 4        | TB6612 PWM               | Motor control PWM                                      |
 | 11     | 17       | TB6612 AIN2              | Motor control AIN2                                     |
