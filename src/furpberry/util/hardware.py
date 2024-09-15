@@ -60,7 +60,7 @@ class Display:
     ) -> None:
         self.CLK = Pin.PI23.value  # BCM 11
         self.SDA = Pin.PI19.value  # BCM 10
-        self.DC = Pin.PI22.value  # BCM 25
+        self.DC = Pin.PI22.value   # BCM 25
         self.BACKLIGHT = Pin.PI29.value
         self._height = height
         self._width = width
@@ -70,10 +70,10 @@ class Display:
         self._invert = invert
 
         if spi_id == 0:
-            self.RST = Pin.PI18.value
+            self.RST = Pin.PI31.value
             self.CS = 0
         elif spi_id == 1:
-            self.RST = Pin.PI31.value
+            self.RST = Pin.PI18.value
             self.CS = 1
         else:
             raise ValueError("Invalid SPI ID")

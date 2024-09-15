@@ -17,14 +17,14 @@ class Furby:
         y_offset: int = 0,
         height: int = 240,
         width: int = 240,
-        rotation: int = 90,
+        l_rotation: int = 180,
+        r_rotation: int = 0,
         invert: bool = False,
     ) -> None:
         self.eye_height = height
         self.eye_width = width
-        self._rotation = rotation
-        self.left_eye: Display = Display(0, x_offset, y_offset, height, width, rotation, invert)
-        self.right_eye: Display = Display(1, x_offset, y_offset, height, width, rotation, invert)
+        self.left_eye: Display = Display(1, x_offset, y_offset, height, width, l_rotation, invert)
+        self.right_eye: Display = Display(0, x_offset, y_offset, height, width, r_rotation, invert)
         self.light_sensor = LightSense()
         self.motor = Motor()
 
@@ -37,7 +37,7 @@ class Furby:
         # display left half on left eye
         # display right_eye half on right_eye eye
         self.starting_image_index = starting_image_index if starting_image_index < len(self.images) else 0
-        image_original = Image.open(os.path.join(self.image_dir, self.images[starting_image_index]))
+        image_original = Image.open(os.path.join(self.image_dir, self.images[self.starting_image_index]))
         image_resized = image_original.resize((self.eye_width * 2, self.eye_height))
         
         left_crop = image_resized.crop((0, 0, self.eye_width, self.eye_height))
@@ -53,7 +53,7 @@ class Furby:
     def roll_eyes(self):
         self.open_eyes(self.starting_image_index)
         self.starting_image_index += 1
-        time.sleep(0.1)
+        time.sleep(0.25)
 
     def wake_up_and_dance(self):
         # move motor and
@@ -74,7 +74,7 @@ def run_furby():
             if furby.light_sensor.measure():
                 furby.wake_up_and_dance()
             else:
-                time.sleep(0.1)
+                time.sleep(0.25)
     except KeyboardInterrupt:
         pass
 
