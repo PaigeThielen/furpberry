@@ -76,7 +76,7 @@ def run_furby():
             else:
                 time.sleep(0.25)
     except KeyboardInterrupt:
-        pass
+        furby.close_eyes()
 
 
 if __name__ == "__main__":
